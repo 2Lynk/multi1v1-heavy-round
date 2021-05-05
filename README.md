@@ -1,6 +1,7 @@
 # multi1v1-heavy-round
 
 A simple plugin that adds a "heavy" round to the multi1v1 plugin by Splewis.
+Players get the Heavy Assault Suit model with either an M249 or Negev and extra health + armor.
 
 ## Features
 - Adjust given health and armor to players
