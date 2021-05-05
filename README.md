@@ -23,7 +23,7 @@ Change these settings to your liking.
 - ``heavyRound_knife``   sets if players will receive a knife, 0 = yes, 1 = no (default 0)
 
 ## To do
-- Give players in the arena unlimited ammo
+- Convar to give players in the arena unlimited ammo or not
 
 ## Changelog
 
