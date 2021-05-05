@@ -13,7 +13,7 @@ Players get the Heavy Assault Suit model with either an M249 or Negev and extra 
 2. Put in csgo folder.
 
 ## Configuration:
-After launching your server with the plugin, the plugin will create a config file named multi1v1.heavy-rounds.cfg in your CSGO/CFG folder.
+After launching your server with the plugin, the plugin will create a config file named multi1v1.heavy-rounds.cfg in your csgo/cfg folder.
 Change these settings to your liking.
 
 ## CVARS
