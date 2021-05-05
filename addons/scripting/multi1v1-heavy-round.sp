@@ -8,6 +8,7 @@ Version:	Description:
 0.1.5		Added convars to set player health and armor << Maybe add a convar for setting the weapon? Perhaps...
 0.1.6		[BUG FIX]: When players did not die during the round either one or both kept the Heavy Armor Suit model
 0.1.7		Added convar to change config give players M249 or Negev
+0.1.8		Added convar to select if players get a knife
 
 */
 
@@ -16,7 +17,7 @@ Version:	Description:
 #define DEBUG
 
 #define PLUGIN_AUTHOR "2Lynk"
-#define PLUGIN_VERSION "0.1.7"
+#define PLUGIN_VERSION "0.1.8"
 
 #include <sourcemod>
 #include <events>
@@ -32,6 +33,7 @@ char g_sModel[MAXPLAYERS + 1][PLATFORM_MAX_PATH+1];
 ConVar cv_heavyRound_health;
 ConVar cv_heavyRound_armor;
 ConVar cv_heavyRound_weapon;
+ConVar cv_heavyRound_knife;
 
 public Plugin myinfo = 
 {
@@ -54,6 +56,8 @@ public void Multi1v1_OnRoundTypesAdded()
 	cv_heavyRound_armor = CreateConVar("heavyRound_armor", "200", "ConVar to set the armor given to players in a Heavy round. 200 is the max! Pointless to set more...");
 	// Create convars to set the weapon to the players in the Heavy round
 	cv_heavyRound_weapon = CreateConVar("heavyRound_weapon", "0", "ConVar to set the weapon given to players in a Heavy round. 0 = M249, 1 = Negev");
+	// Create convars to set if the players are given a knife in the Heavy round
+	cv_heavyRound_knife = CreateConVar("heavyRound_knife", "0", "ConVar to set if the players are given a knife in a Heavy round. 0 = yes, 1 = no");
 
 	// Then create and add the convars to the cfg file
 	AutoExecConfig(true, "multi1v1.heavy-rounds");	
@@ -66,6 +70,10 @@ public void heavyHandler(int client)
 	SetEntityHealth(client, cv_heavyRound_health.IntValue);
 	// Set player armor
 	SetEntProp(client, Prop_Data, "m_ArmorValue", cv_heavyRound_armor.IntValue);
+	// Give player a knife?
+	if(cv_heavyRound_knife.IntValue == 0){
+		GivePlayerItem(client, "weapon_knife");
+	}
 	// Give player the weapon
 	if(cv_heavyRound_weapon.IntValue == 0){
 		GivePlayerItem(client, "weapon_m249");
