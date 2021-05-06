@@ -49,4 +49,4 @@ Version: --- Description:
 
 0.1.8--------Added convar to select if players get a knife
 
-0.1.9--------Put HookEvent in OnPluginStart and filled g_sModel with the player current model before giving heavy armor suit (Thanks Cruze! https://forums.alliedmods.net/member.php?u=27949 )
+0.1.9--------Put HookEvent in OnPluginStart and filled g_sModel with the player current model before giving heavy armor suit (Thanks Cruze! https://forums.alliedmods.net/showthread.php?p=2746080#post2746080)
