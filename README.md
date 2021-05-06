@@ -48,3 +48,5 @@ Version: --- Description:
 0.1.7--------Added convar to change config give players M249 or Negev
 
 0.1.8--------Added convar to select if players get a knife
+
+0.1.9--------Put HookEvent in OnPluginStart and filled g_sModel with the player current model before giving heavy armor suit (Thanks Cruze! https://forums.alliedmods.net/member.php?u=27949 )
