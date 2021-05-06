@@ -1,5 +1,7 @@
 # multi1v1-heavy-round
 
+![GitHub all releases](https://img.shields.io/github/downloads/2Lynk/multi1v1-heavy-round/total?color=brightgreen&logo=GitHub)
+
 A simple plugin that adds a "heavy" round to the multi1v1 plugin by Splewis.
 Players get the Heavy Assault Suit model with either an M249 or Negev and extra health + armor.
 
