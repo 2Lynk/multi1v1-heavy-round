@@ -9,6 +9,7 @@ Version:	Description:
 0.1.6		[BUG FIX]: When players did not die during the round either one or both kept the Heavy Armor Suit model
 0.1.7		Added convar to change config give players M249 or Negev
 0.1.8		Added convar to select if players get a knife
+0.1.9		Put HookEvent in OnPluginStart and defined g_sModel with the player current model before giving heavy armor suit (Thanks Cruze! https://forums.alliedmods.net/member.php?u=279498 )
 
 */
 
@@ -17,7 +18,7 @@ Version:	Description:
 #define DEBUG
 
 #define PLUGIN_AUTHOR "2Lynk"
-#define PLUGIN_VERSION "0.1.8"
+#define PLUGIN_VERSION "0.1.9"
 
 #include <sourcemod>
 #include <events>
@@ -44,6 +45,10 @@ public Plugin myinfo =
 	url = "https://github.com/2Lynk/multi1v1-heavy-round"
 };
 
+public void OnPluginStart(){
+	// Create an hook, when the round ends execute the hook to remove the heavy armor suit and reset the player model
+	 HookEvent("round_end", Event_OnRoundEnd);
+}
 
 public void Multi1v1_OnRoundTypesAdded() 
 {
@@ -81,10 +86,11 @@ public void heavyHandler(int client)
 		GivePlayerItem(client, "weapon_negev");
 	}
 	
-	// Set the player model to Heavy Assault Suit
+	// Get the current player model and write it to the g_sModel array so we can restore it at the end of the round
+	GetClientModel(client, g_sModel[client], sizeof(g_sModel));
+	// Then set the player model to Heavy Assault Suit
 	GivePlayerItem(client, "item_heavyassaultsuit");
-	// Create an hook, when the round ends execute the hook to remove the heavy armor suit and reset the player model
-	HookEvent("round_end", Event_OnRoundEnd);
+	
 }
 
 public Action Event_OnRoundEnd(Event event, const char[] name, bool dontBroadcast)
